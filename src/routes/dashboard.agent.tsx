@@ -200,7 +200,7 @@ function AgentPage() {
               {services.map((s) => (
                 <li key={s.slug} className="flex items-center gap-2 rounded-lg border border-border px-3 py-2">
                   <span className="size-1.5 rounded-full bg-accent" />
-                  {s.title}
+                  {s.name}
                 </li>
               ))}
             </ul>

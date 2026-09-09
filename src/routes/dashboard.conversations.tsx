@@ -24,7 +24,7 @@ const filters = [
 function ConversationsPage() {
   const [list, setList] = useState<Conversation[]>(seed);
   const [filter, setFilter] = useState<(typeof filters)[number]>("Tous");
-  const [activeId, setActiveId] = useState(seed[0].id);
+  const [activeId, setActiveId] = useState(seed[0]!.id);
   const [draft, setDraft] = useState("");
   const [note, setNote] = useState("");
 

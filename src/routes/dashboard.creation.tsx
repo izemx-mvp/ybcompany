@@ -15,21 +15,21 @@ import { cn } from "@/lib/utils";
 type Search = { idea?: string };
 
 export const Route = createFileRoute("/dashboard/creation")({
-  validateSearch: (search: Record<string, unknown>): Search => ({
-    idea: typeof search.idea === "string" ? search.idea : undefined,
-  }),
+  validateSearch: (search: Record<string, unknown>): Search =>
+    typeof search['idea'] === "string" ? { idea: search['idea'] } : {},
   component: CreationPage,
 });
 
 function CreationPage() {
-  const { idea: ideaId } = Route.useSearch();
+  const search = Route.useSearch();
+  const ideaId = search.idea;
   const idea = contentIdeas.find((i) => i.id === ideaId);
 
   const [network, setNetwork] = useState<string>(idea?.network ?? contentNetworks[0]);
   const [format, setFormat] = useState<string>(idea?.format ?? contentFormats[0]);
   const [tone, setTone] = useState<string>(contentTones[0]);
   const [language, setLanguage] = useState<string>(contentLanguages[0]);
-  const [media, setMedia] = useState(mediaLibrary[0]);
+  const [media, setMedia] = useState(mediaLibrary[0]!);
   const [caption, setCaption] = useState(
     idea
       ? `${idea.hook}\n\n${idea.concept}\n\nYB COMPANY — production textile et communication visuelle à Casablanca.\n\n#YBCOMPANY #Casablanca #Production`

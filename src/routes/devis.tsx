@@ -7,9 +7,8 @@ import { services, type ServiceSlug } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/devis")({
-  validateSearch: (search: Record<string, unknown>) => ({
-    service: typeof search.service === "string" ? (search.service as ServiceSlug) : undefined,
-  }),
+  validateSearch: (search: Record<string, unknown>): { service?: ServiceSlug } =>
+    typeof search['service'] === "string" ? { service: search['service'] as ServiceSlug } : {},
   head: () => ({
     meta: [
       { title: "Demande de devis — YB COMPANY" },

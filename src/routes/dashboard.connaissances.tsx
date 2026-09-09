@@ -62,9 +62,9 @@ function KnowledgePage() {
         <Panel title="FAQ utilisée par l'IA">
           <div className="space-y-3">
             {faq.map((f) => (
-              <details key={f.question} className="rounded-xl border border-border p-3">
-                <summary className="cursor-pointer text-sm font-medium">{f.question}</summary>
-                <p className="mt-2 text-xs text-mist">{f.answer}</p>
+              <details key={f.q} className="rounded-xl border border-border p-3">
+                <summary className="cursor-pointer text-sm font-medium">{f.q}</summary>
+                <p className="mt-2 text-xs text-mist">{f.a}</p>
               </details>
             ))}
           </div>
