@@ -15,9 +15,13 @@ import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as DevisRouteImport } from './routes/devis'
 import { Route as RealisationsRouteImport } from './routes/realisations'
 import { Route as DashboardIndexRouteImport } from './routes/dashboard.index'
+import { Route as DashboardAgentRouteImport } from './routes/dashboard.agent'
 import { Route as DashboardConversationsRouteImport } from './routes/dashboard.conversations'
+import { Route as DashboardCreationRouteImport } from './routes/dashboard.creation'
 import { Route as DashboardDemandesRouteImport } from './routes/dashboard.demandes'
+import { Route as DashboardIdeesRouteImport } from './routes/dashboard.idees'
 import { Route as DashboardProspectsRouteImport } from './routes/dashboard.prospects'
+import { Route as DashboardRendezVousRouteImport } from './routes/dashboard.rendez-vous'
 import { Route as ExpertisesSlugRouteImport } from './routes/expertises.$slug'
 
 const IndexRoute = IndexRouteImport.update({
@@ -50,9 +54,19 @@ const DashboardIndexRoute = DashboardIndexRouteImport.update({
   path: '/',
   getParentRoute: () => DashboardRoute,
 } as any)
+const DashboardAgentRoute = DashboardAgentRouteImport.update({
+  id: '/agent',
+  path: '/agent',
+  getParentRoute: () => DashboardRoute,
+} as any)
 const DashboardConversationsRoute = DashboardConversationsRouteImport.update({
   id: '/conversations',
   path: '/conversations',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardCreationRoute = DashboardCreationRouteImport.update({
+  id: '/creation',
+  path: '/creation',
   getParentRoute: () => DashboardRoute,
 } as any)
 const DashboardDemandesRoute = DashboardDemandesRouteImport.update({
@@ -60,9 +74,19 @@ const DashboardDemandesRoute = DashboardDemandesRouteImport.update({
   path: '/demandes',
   getParentRoute: () => DashboardRoute,
 } as any)
+const DashboardIdeesRoute = DashboardIdeesRouteImport.update({
+  id: '/idees',
+  path: '/idees',
+  getParentRoute: () => DashboardRoute,
+} as any)
 const DashboardProspectsRoute = DashboardProspectsRouteImport.update({
   id: '/prospects',
   path: '/prospects',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardRendezVousRoute = DashboardRendezVousRouteImport.update({
+  id: '/rendez-vous',
+  path: '/rendez-vous',
   getParentRoute: () => DashboardRoute,
 } as any)
 const ExpertisesSlugRoute = ExpertisesSlugRouteImport.update({
@@ -77,9 +101,13 @@ export interface FileRoutesByFullPath {
   '/dashboard': typeof DashboardRouteWithChildren
   '/devis': typeof DevisRoute
   '/realisations': typeof RealisationsRoute
+  '/dashboard/agent': typeof DashboardAgentRoute
   '/dashboard/conversations': typeof DashboardConversationsRoute
+  '/dashboard/creation': typeof DashboardCreationRoute
   '/dashboard/demandes': typeof DashboardDemandesRoute
+  '/dashboard/idees': typeof DashboardIdeesRoute
   '/dashboard/prospects': typeof DashboardProspectsRoute
+  '/dashboard/rendez-vous': typeof DashboardRendezVousRoute
   '/expertises/$slug': typeof ExpertisesSlugRoute
   '/dashboard/': typeof DashboardIndexRoute
 }
@@ -88,9 +116,13 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/devis': typeof DevisRoute
   '/realisations': typeof RealisationsRoute
+  '/dashboard/agent': typeof DashboardAgentRoute
   '/dashboard/conversations': typeof DashboardConversationsRoute
+  '/dashboard/creation': typeof DashboardCreationRoute
   '/dashboard/demandes': typeof DashboardDemandesRoute
+  '/dashboard/idees': typeof DashboardIdeesRoute
   '/dashboard/prospects': typeof DashboardProspectsRoute
+  '/dashboard/rendez-vous': typeof DashboardRendezVousRoute
   '/expertises/$slug': typeof ExpertisesSlugRoute
   '/dashboard': typeof DashboardIndexRoute
 }
@@ -101,9 +133,13 @@ export interface FileRoutesById {
   '/dashboard': typeof DashboardRouteWithChildren
   '/devis': typeof DevisRoute
   '/realisations': typeof RealisationsRoute
+  '/dashboard/agent': typeof DashboardAgentRoute
   '/dashboard/conversations': typeof DashboardConversationsRoute
+  '/dashboard/creation': typeof DashboardCreationRoute
   '/dashboard/demandes': typeof DashboardDemandesRoute
+  '/dashboard/idees': typeof DashboardIdeesRoute
   '/dashboard/prospects': typeof DashboardProspectsRoute
+  '/dashboard/rendez-vous': typeof DashboardRendezVousRoute
   '/expertises/$slug': typeof ExpertisesSlugRoute
   '/dashboard/': typeof DashboardIndexRoute
 }
@@ -115,9 +151,13 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/devis'
     | '/realisations'
+    | '/dashboard/agent'
     | '/dashboard/conversations'
+    | '/dashboard/creation'
     | '/dashboard/demandes'
+    | '/dashboard/idees'
     | '/dashboard/prospects'
+    | '/dashboard/rendez-vous'
     | '/expertises/$slug'
     | '/dashboard/'
   fileRoutesByTo: FileRoutesByTo
@@ -126,9 +166,13 @@ export interface FileRouteTypes {
     | '/contact'
     | '/devis'
     | '/realisations'
+    | '/dashboard/agent'
     | '/dashboard/conversations'
+    | '/dashboard/creation'
     | '/dashboard/demandes'
+    | '/dashboard/idees'
     | '/dashboard/prospects'
+    | '/dashboard/rendez-vous'
     | '/expertises/$slug'
     | '/dashboard'
   id:
@@ -138,9 +182,13 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/devis'
     | '/realisations'
+    | '/dashboard/agent'
     | '/dashboard/conversations'
+    | '/dashboard/creation'
     | '/dashboard/demandes'
+    | '/dashboard/idees'
     | '/dashboard/prospects'
+    | '/dashboard/rendez-vous'
     | '/expertises/$slug'
     | '/dashboard/'
   fileRoutesById: FileRoutesById
@@ -198,11 +246,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardIndexRouteImport
       parentRoute: typeof DashboardRoute
     }
+    '/dashboard/agent': {
+      id: '/dashboard/agent'
+      path: '/agent'
+      fullPath: '/dashboard/agent'
+      preLoaderRoute: typeof DashboardAgentRouteImport
+      parentRoute: typeof DashboardRoute
+    }
     '/dashboard/conversations': {
       id: '/dashboard/conversations'
       path: '/conversations'
       fullPath: '/dashboard/conversations'
       preLoaderRoute: typeof DashboardConversationsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/creation': {
+      id: '/dashboard/creation'
+      path: '/creation'
+      fullPath: '/dashboard/creation'
+      preLoaderRoute: typeof DashboardCreationRouteImport
       parentRoute: typeof DashboardRoute
     }
     '/dashboard/demandes': {
@@ -212,11 +274,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardDemandesRouteImport
       parentRoute: typeof DashboardRoute
     }
+    '/dashboard/idees': {
+      id: '/dashboard/idees'
+      path: '/idees'
+      fullPath: '/dashboard/idees'
+      preLoaderRoute: typeof DashboardIdeesRouteImport
+      parentRoute: typeof DashboardRoute
+    }
     '/dashboard/prospects': {
       id: '/dashboard/prospects'
       path: '/prospects'
       fullPath: '/dashboard/prospects'
       preLoaderRoute: typeof DashboardProspectsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/rendez-vous': {
+      id: '/dashboard/rendez-vous'
+      path: '/rendez-vous'
+      fullPath: '/dashboard/rendez-vous'
+      preLoaderRoute: typeof DashboardRendezVousRouteImport
       parentRoute: typeof DashboardRoute
     }
     '/expertises/$slug': {
@@ -230,16 +306,24 @@ declare module '@tanstack/react-router' {
 }
 
 interface DashboardRouteChildren {
+  DashboardAgentRoute: typeof DashboardAgentRoute
   DashboardConversationsRoute: typeof DashboardConversationsRoute
+  DashboardCreationRoute: typeof DashboardCreationRoute
   DashboardDemandesRoute: typeof DashboardDemandesRoute
+  DashboardIdeesRoute: typeof DashboardIdeesRoute
   DashboardProspectsRoute: typeof DashboardProspectsRoute
+  DashboardRendezVousRoute: typeof DashboardRendezVousRoute
   DashboardIndexRoute: typeof DashboardIndexRoute
 }
 
 const DashboardRouteChildren: DashboardRouteChildren = {
+  DashboardAgentRoute: DashboardAgentRoute,
   DashboardConversationsRoute: DashboardConversationsRoute,
+  DashboardCreationRoute: DashboardCreationRoute,
   DashboardDemandesRoute: DashboardDemandesRoute,
+  DashboardIdeesRoute: DashboardIdeesRoute,
   DashboardProspectsRoute: DashboardProspectsRoute,
+  DashboardRendezVousRoute: DashboardRendezVousRoute,
   DashboardIndexRoute: DashboardIndexRoute,
 }
 
