@@ -278,10 +278,12 @@ function ConversationsPage() {
                   placeholder="Ajouter une note…"
                   className="w-full rounded-lg border border-border bg-ink/40 px-3 py-2 text-xs outline-none placeholder:text-mist focus:border-primary"
                 />
-                <GhostButton onClick={() => undefined} className="w-full">
-                  <span onClick={() => undefined}>Enregistrer la note</span>
-                </GhostButton>
-                <button type="submit" className="hidden" aria-hidden />
+                <button
+                  type="submit"
+                  className="w-full rounded-lg border border-border bg-foreground/5 px-3 py-1.5 text-xs font-medium text-mist hover:text-foreground"
+                >
+                  Enregistrer la note
+                </button>
               </form>
             </div>
           </div>
