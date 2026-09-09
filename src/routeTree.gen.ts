@@ -10,33 +10,292 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as DevisRouteImport } from './routes/devis'
+import { Route as RealisationsRouteImport } from './routes/realisations'
+import { Route as DashboardIndexRouteImport } from './routes/dashboard.index'
+import { Route as DashboardAgentRouteImport } from './routes/dashboard.agent'
+import { Route as DashboardAnalyseRouteImport } from './routes/dashboard.analyse'
+import { Route as DashboardCalendrierRouteImport } from './routes/dashboard.calendrier'
+import { Route as DashboardConnaissancesRouteImport } from './routes/dashboard.connaissances'
+import { Route as DashboardConversationsRouteImport } from './routes/dashboard.conversations'
+import { Route as DashboardCreationRouteImport } from './routes/dashboard.creation'
+import { Route as DashboardDemandesRouteImport } from './routes/dashboard.demandes'
+import { Route as DashboardIdeesRouteImport } from './routes/dashboard.idees'
+import { Route as DashboardIntegrationsRouteImport } from './routes/dashboard.integrations'
+import { Route as DashboardMediathequeRouteImport } from './routes/dashboard.mediatheque'
+import { Route as DashboardParametresRouteImport } from './routes/dashboard.parametres'
+import { Route as DashboardProspectsRouteImport } from './routes/dashboard.prospects'
+import { Route as DashboardPublicationsRouteImport } from './routes/dashboard.publications'
+import { Route as DashboardRendezVousRouteImport } from './routes/dashboard.rendez-vous'
+import { Route as DashboardUtilisateursRouteImport } from './routes/dashboard.utilisateurs'
+import { Route as ExpertisesSlugRouteImport } from './routes/expertises.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DevisRoute = DevisRouteImport.update({
+  id: '/devis',
+  path: '/devis',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RealisationsRoute = RealisationsRouteImport.update({
+  id: '/realisations',
+  path: '/realisations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardIndexRoute = DashboardIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardAgentRoute = DashboardAgentRouteImport.update({
+  id: '/agent',
+  path: '/agent',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardAnalyseRoute = DashboardAnalyseRouteImport.update({
+  id: '/analyse',
+  path: '/analyse',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardCalendrierRoute = DashboardCalendrierRouteImport.update({
+  id: '/calendrier',
+  path: '/calendrier',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardConnaissancesRoute = DashboardConnaissancesRouteImport.update({
+  id: '/connaissances',
+  path: '/connaissances',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardConversationsRoute = DashboardConversationsRouteImport.update({
+  id: '/conversations',
+  path: '/conversations',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardCreationRoute = DashboardCreationRouteImport.update({
+  id: '/creation',
+  path: '/creation',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardDemandesRoute = DashboardDemandesRouteImport.update({
+  id: '/demandes',
+  path: '/demandes',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardIdeesRoute = DashboardIdeesRouteImport.update({
+  id: '/idees',
+  path: '/idees',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardIntegrationsRoute = DashboardIntegrationsRouteImport.update({
+  id: '/integrations',
+  path: '/integrations',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardMediathequeRoute = DashboardMediathequeRouteImport.update({
+  id: '/mediatheque',
+  path: '/mediatheque',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardParametresRoute = DashboardParametresRouteImport.update({
+  id: '/parametres',
+  path: '/parametres',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardProspectsRoute = DashboardProspectsRouteImport.update({
+  id: '/prospects',
+  path: '/prospects',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardPublicationsRoute = DashboardPublicationsRouteImport.update({
+  id: '/publications',
+  path: '/publications',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardRendezVousRoute = DashboardRendezVousRouteImport.update({
+  id: '/rendez-vous',
+  path: '/rendez-vous',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardUtilisateursRoute = DashboardUtilisateursRouteImport.update({
+  id: '/utilisateurs',
+  path: '/utilisateurs',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const ExpertisesSlugRoute = ExpertisesSlugRouteImport.update({
+  id: '/expertises/$slug',
+  path: '/expertises/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
+  '/dashboard': typeof DashboardRouteWithChildren
+  '/devis': typeof DevisRoute
+  '/realisations': typeof RealisationsRoute
+  '/dashboard/agent': typeof DashboardAgentRoute
+  '/dashboard/analyse': typeof DashboardAnalyseRoute
+  '/dashboard/calendrier': typeof DashboardCalendrierRoute
+  '/dashboard/connaissances': typeof DashboardConnaissancesRoute
+  '/dashboard/conversations': typeof DashboardConversationsRoute
+  '/dashboard/creation': typeof DashboardCreationRoute
+  '/dashboard/demandes': typeof DashboardDemandesRoute
+  '/dashboard/idees': typeof DashboardIdeesRoute
+  '/dashboard/integrations': typeof DashboardIntegrationsRoute
+  '/dashboard/mediatheque': typeof DashboardMediathequeRoute
+  '/dashboard/parametres': typeof DashboardParametresRoute
+  '/dashboard/prospects': typeof DashboardProspectsRoute
+  '/dashboard/publications': typeof DashboardPublicationsRoute
+  '/dashboard/rendez-vous': typeof DashboardRendezVousRoute
+  '/dashboard/utilisateurs': typeof DashboardUtilisateursRoute
+  '/expertises/$slug': typeof ExpertisesSlugRoute
+  '/dashboard/': typeof DashboardIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
+  '/devis': typeof DevisRoute
+  '/realisations': typeof RealisationsRoute
+  '/dashboard/agent': typeof DashboardAgentRoute
+  '/dashboard/analyse': typeof DashboardAnalyseRoute
+  '/dashboard/calendrier': typeof DashboardCalendrierRoute
+  '/dashboard/connaissances': typeof DashboardConnaissancesRoute
+  '/dashboard/conversations': typeof DashboardConversationsRoute
+  '/dashboard/creation': typeof DashboardCreationRoute
+  '/dashboard/demandes': typeof DashboardDemandesRoute
+  '/dashboard/idees': typeof DashboardIdeesRoute
+  '/dashboard/integrations': typeof DashboardIntegrationsRoute
+  '/dashboard/mediatheque': typeof DashboardMediathequeRoute
+  '/dashboard/parametres': typeof DashboardParametresRoute
+  '/dashboard/prospects': typeof DashboardProspectsRoute
+  '/dashboard/publications': typeof DashboardPublicationsRoute
+  '/dashboard/rendez-vous': typeof DashboardRendezVousRoute
+  '/dashboard/utilisateurs': typeof DashboardUtilisateursRoute
+  '/expertises/$slug': typeof ExpertisesSlugRoute
+  '/dashboard': typeof DashboardIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
+  '/dashboard': typeof DashboardRouteWithChildren
+  '/devis': typeof DevisRoute
+  '/realisations': typeof RealisationsRoute
+  '/dashboard/agent': typeof DashboardAgentRoute
+  '/dashboard/analyse': typeof DashboardAnalyseRoute
+  '/dashboard/calendrier': typeof DashboardCalendrierRoute
+  '/dashboard/connaissances': typeof DashboardConnaissancesRoute
+  '/dashboard/conversations': typeof DashboardConversationsRoute
+  '/dashboard/creation': typeof DashboardCreationRoute
+  '/dashboard/demandes': typeof DashboardDemandesRoute
+  '/dashboard/idees': typeof DashboardIdeesRoute
+  '/dashboard/integrations': typeof DashboardIntegrationsRoute
+  '/dashboard/mediatheque': typeof DashboardMediathequeRoute
+  '/dashboard/parametres': typeof DashboardParametresRoute
+  '/dashboard/prospects': typeof DashboardProspectsRoute
+  '/dashboard/publications': typeof DashboardPublicationsRoute
+  '/dashboard/rendez-vous': typeof DashboardRendezVousRoute
+  '/dashboard/utilisateurs': typeof DashboardUtilisateursRoute
+  '/expertises/$slug': typeof ExpertisesSlugRoute
+  '/dashboard/': typeof DashboardIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/contact'
+    | '/dashboard'
+    | '/devis'
+    | '/realisations'
+    | '/dashboard/agent'
+    | '/dashboard/analyse'
+    | '/dashboard/calendrier'
+    | '/dashboard/connaissances'
+    | '/dashboard/conversations'
+    | '/dashboard/creation'
+    | '/dashboard/demandes'
+    | '/dashboard/idees'
+    | '/dashboard/integrations'
+    | '/dashboard/mediatheque'
+    | '/dashboard/parametres'
+    | '/dashboard/prospects'
+    | '/dashboard/publications'
+    | '/dashboard/rendez-vous'
+    | '/dashboard/utilisateurs'
+    | '/expertises/$slug'
+    | '/dashboard/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/contact'
+    | '/devis'
+    | '/realisations'
+    | '/dashboard/agent'
+    | '/dashboard/analyse'
+    | '/dashboard/calendrier'
+    | '/dashboard/connaissances'
+    | '/dashboard/conversations'
+    | '/dashboard/creation'
+    | '/dashboard/demandes'
+    | '/dashboard/idees'
+    | '/dashboard/integrations'
+    | '/dashboard/mediatheque'
+    | '/dashboard/parametres'
+    | '/dashboard/prospects'
+    | '/dashboard/publications'
+    | '/dashboard/rendez-vous'
+    | '/dashboard/utilisateurs'
+    | '/expertises/$slug'
+    | '/dashboard'
+  id:
+    | '__root__'
+    | '/'
+    | '/contact'
+    | '/dashboard'
+    | '/devis'
+    | '/realisations'
+    | '/dashboard/agent'
+    | '/dashboard/analyse'
+    | '/dashboard/calendrier'
+    | '/dashboard/connaissances'
+    | '/dashboard/conversations'
+    | '/dashboard/creation'
+    | '/dashboard/demandes'
+    | '/dashboard/idees'
+    | '/dashboard/integrations'
+    | '/dashboard/mediatheque'
+    | '/dashboard/parametres'
+    | '/dashboard/prospects'
+    | '/dashboard/publications'
+    | '/dashboard/rendez-vous'
+    | '/dashboard/utilisateurs'
+    | '/expertises/$slug'
+    | '/dashboard/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ContactRoute: typeof ContactRoute
+  DashboardRoute: typeof DashboardRouteWithChildren
+  DevisRoute: typeof DevisRoute
+  RealisationsRoute: typeof RealisationsRoute
+  ExpertisesSlugRoute: typeof ExpertisesSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +307,205 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/devis': {
+      id: '/devis'
+      path: '/devis'
+      fullPath: '/devis'
+      preLoaderRoute: typeof DevisRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/realisations': {
+      id: '/realisations'
+      path: '/realisations'
+      fullPath: '/realisations'
+      preLoaderRoute: typeof RealisationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard/': {
+      id: '/dashboard/'
+      path: '/'
+      fullPath: '/dashboard/'
+      preLoaderRoute: typeof DashboardIndexRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/agent': {
+      id: '/dashboard/agent'
+      path: '/agent'
+      fullPath: '/dashboard/agent'
+      preLoaderRoute: typeof DashboardAgentRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/analyse': {
+      id: '/dashboard/analyse'
+      path: '/analyse'
+      fullPath: '/dashboard/analyse'
+      preLoaderRoute: typeof DashboardAnalyseRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/calendrier': {
+      id: '/dashboard/calendrier'
+      path: '/calendrier'
+      fullPath: '/dashboard/calendrier'
+      preLoaderRoute: typeof DashboardCalendrierRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/connaissances': {
+      id: '/dashboard/connaissances'
+      path: '/connaissances'
+      fullPath: '/dashboard/connaissances'
+      preLoaderRoute: typeof DashboardConnaissancesRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/conversations': {
+      id: '/dashboard/conversations'
+      path: '/conversations'
+      fullPath: '/dashboard/conversations'
+      preLoaderRoute: typeof DashboardConversationsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/creation': {
+      id: '/dashboard/creation'
+      path: '/creation'
+      fullPath: '/dashboard/creation'
+      preLoaderRoute: typeof DashboardCreationRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/demandes': {
+      id: '/dashboard/demandes'
+      path: '/demandes'
+      fullPath: '/dashboard/demandes'
+      preLoaderRoute: typeof DashboardDemandesRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/idees': {
+      id: '/dashboard/idees'
+      path: '/idees'
+      fullPath: '/dashboard/idees'
+      preLoaderRoute: typeof DashboardIdeesRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/integrations': {
+      id: '/dashboard/integrations'
+      path: '/integrations'
+      fullPath: '/dashboard/integrations'
+      preLoaderRoute: typeof DashboardIntegrationsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/mediatheque': {
+      id: '/dashboard/mediatheque'
+      path: '/mediatheque'
+      fullPath: '/dashboard/mediatheque'
+      preLoaderRoute: typeof DashboardMediathequeRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/parametres': {
+      id: '/dashboard/parametres'
+      path: '/parametres'
+      fullPath: '/dashboard/parametres'
+      preLoaderRoute: typeof DashboardParametresRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/prospects': {
+      id: '/dashboard/prospects'
+      path: '/prospects'
+      fullPath: '/dashboard/prospects'
+      preLoaderRoute: typeof DashboardProspectsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/publications': {
+      id: '/dashboard/publications'
+      path: '/publications'
+      fullPath: '/dashboard/publications'
+      preLoaderRoute: typeof DashboardPublicationsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/rendez-vous': {
+      id: '/dashboard/rendez-vous'
+      path: '/rendez-vous'
+      fullPath: '/dashboard/rendez-vous'
+      preLoaderRoute: typeof DashboardRendezVousRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/utilisateurs': {
+      id: '/dashboard/utilisateurs'
+      path: '/utilisateurs'
+      fullPath: '/dashboard/utilisateurs'
+      preLoaderRoute: typeof DashboardUtilisateursRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/expertises/$slug': {
+      id: '/expertises/$slug'
+      path: '/expertises/$slug'
+      fullPath: '/expertises/$slug'
+      preLoaderRoute: typeof ExpertisesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
+interface DashboardRouteChildren {
+  DashboardAgentRoute: typeof DashboardAgentRoute
+  DashboardAnalyseRoute: typeof DashboardAnalyseRoute
+  DashboardCalendrierRoute: typeof DashboardCalendrierRoute
+  DashboardConnaissancesRoute: typeof DashboardConnaissancesRoute
+  DashboardConversationsRoute: typeof DashboardConversationsRoute
+  DashboardCreationRoute: typeof DashboardCreationRoute
+  DashboardDemandesRoute: typeof DashboardDemandesRoute
+  DashboardIdeesRoute: typeof DashboardIdeesRoute
+  DashboardIntegrationsRoute: typeof DashboardIntegrationsRoute
+  DashboardMediathequeRoute: typeof DashboardMediathequeRoute
+  DashboardParametresRoute: typeof DashboardParametresRoute
+  DashboardProspectsRoute: typeof DashboardProspectsRoute
+  DashboardPublicationsRoute: typeof DashboardPublicationsRoute
+  DashboardRendezVousRoute: typeof DashboardRendezVousRoute
+  DashboardUtilisateursRoute: typeof DashboardUtilisateursRoute
+  DashboardIndexRoute: typeof DashboardIndexRoute
+}
+
+const DashboardRouteChildren: DashboardRouteChildren = {
+  DashboardAgentRoute: DashboardAgentRoute,
+  DashboardAnalyseRoute: DashboardAnalyseRoute,
+  DashboardCalendrierRoute: DashboardCalendrierRoute,
+  DashboardConnaissancesRoute: DashboardConnaissancesRoute,
+  DashboardConversationsRoute: DashboardConversationsRoute,
+  DashboardCreationRoute: DashboardCreationRoute,
+  DashboardDemandesRoute: DashboardDemandesRoute,
+  DashboardIdeesRoute: DashboardIdeesRoute,
+  DashboardIntegrationsRoute: DashboardIntegrationsRoute,
+  DashboardMediathequeRoute: DashboardMediathequeRoute,
+  DashboardParametresRoute: DashboardParametresRoute,
+  DashboardProspectsRoute: DashboardProspectsRoute,
+  DashboardPublicationsRoute: DashboardPublicationsRoute,
+  DashboardRendezVousRoute: DashboardRendezVousRoute,
+  DashboardUtilisateursRoute: DashboardUtilisateursRoute,
+  DashboardIndexRoute: DashboardIndexRoute,
+}
+
+const DashboardRouteWithChildren = DashboardRoute._addFileChildren(
+  DashboardRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ContactRoute: ContactRoute,
+  DashboardRoute: DashboardRouteWithChildren,
+  DevisRoute: DevisRoute,
+  RealisationsRoute: RealisationsRoute,
+  ExpertisesSlugRoute: ExpertisesSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
