@@ -14,6 +14,8 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as DevisRouteImport } from './routes/devis'
 import { Route as RealisationsRouteImport } from './routes/realisations'
+import { Route as DashboardIndexRouteImport } from './routes/dashboard.index'
+import { Route as DashboardConversationsRouteImport } from './routes/dashboard.conversations'
 import { Route as ExpertisesSlugRouteImport } from './routes/expertises.$slug'
 
 const IndexRoute = IndexRouteImport.update({
@@ -41,6 +43,16 @@ const RealisationsRoute = RealisationsRouteImport.update({
   path: '/realisations',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardIndexRoute = DashboardIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardConversationsRoute = DashboardConversationsRouteImport.update({
+  id: '/conversations',
+  path: '/conversations',
+  getParentRoute: () => DashboardRoute,
+} as any)
 const ExpertisesSlugRoute = ExpertisesSlugRouteImport.update({
   id: '/expertises/$slug',
   path: '/expertises/$slug',
@@ -50,27 +62,32 @@ const ExpertisesSlugRoute = ExpertisesSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
-  '/dashboard': typeof DashboardRoute
+  '/dashboard': typeof DashboardRouteWithChildren
   '/devis': typeof DevisRoute
   '/realisations': typeof RealisationsRoute
+  '/dashboard/conversations': typeof DashboardConversationsRoute
   '/expertises/$slug': typeof ExpertisesSlugRoute
+  '/dashboard/': typeof DashboardIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
-  '/dashboard': typeof DashboardRoute
   '/devis': typeof DevisRoute
   '/realisations': typeof RealisationsRoute
+  '/dashboard/conversations': typeof DashboardConversationsRoute
   '/expertises/$slug': typeof ExpertisesSlugRoute
+  '/dashboard': typeof DashboardIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
-  '/dashboard': typeof DashboardRoute
+  '/dashboard': typeof DashboardRouteWithChildren
   '/devis': typeof DevisRoute
   '/realisations': typeof RealisationsRoute
+  '/dashboard/conversations': typeof DashboardConversationsRoute
   '/expertises/$slug': typeof ExpertisesSlugRoute
+  '/dashboard/': typeof DashboardIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -80,15 +97,18 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/devis'
     | '/realisations'
+    | '/dashboard/conversations'
     | '/expertises/$slug'
+    | '/dashboard/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/contact'
-    | '/dashboard'
     | '/devis'
     | '/realisations'
+    | '/dashboard/conversations'
     | '/expertises/$slug'
+    | '/dashboard'
   id:
     | '__root__'
     | '/'
@@ -96,13 +116,15 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/devis'
     | '/realisations'
+    | '/dashboard/conversations'
     | '/expertises/$slug'
+    | '/dashboard/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ContactRoute: typeof ContactRoute
-  DashboardRoute: typeof DashboardRoute
+  DashboardRoute: typeof DashboardRouteWithChildren
   DevisRoute: typeof DevisRoute
   RealisationsRoute: typeof RealisationsRoute
   ExpertisesSlugRoute: typeof ExpertisesSlugRoute
@@ -145,6 +167,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RealisationsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard/': {
+      id: '/dashboard/'
+      path: '/'
+      fullPath: '/dashboard/'
+      preLoaderRoute: typeof DashboardIndexRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/conversations': {
+      id: '/dashboard/conversations'
+      path: '/conversations'
+      fullPath: '/dashboard/conversations'
+      preLoaderRoute: typeof DashboardConversationsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
     '/expertises/$slug': {
       id: '/expertises/$slug'
       path: '/expertises/$slug'
@@ -155,10 +191,24 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface DashboardRouteChildren {
+  DashboardConversationsRoute: typeof DashboardConversationsRoute
+  DashboardIndexRoute: typeof DashboardIndexRoute
+}
+
+const DashboardRouteChildren: DashboardRouteChildren = {
+  DashboardConversationsRoute: DashboardConversationsRoute,
+  DashboardIndexRoute: DashboardIndexRoute,
+}
+
+const DashboardRouteWithChildren = DashboardRoute._addFileChildren(
+  DashboardRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ContactRoute: ContactRoute,
-  DashboardRoute: DashboardRoute,
+  DashboardRoute: DashboardRouteWithChildren,
   DevisRoute: DevisRoute,
   RealisationsRoute: RealisationsRoute,
   ExpertisesSlugRoute: ExpertisesSlugRoute,
